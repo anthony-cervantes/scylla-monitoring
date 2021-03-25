@@ -60,8 +60,8 @@ if [[ ! $DOCKER_PARAM = *"--net=host"* ]]; then
 fi
 
 
-docker run -d $DOCKER_PARAM -i $PORT_MAPPING \
-	 -v $RULE_FILE:/etc/alertmanager/config.yml:z \
+docker run -u root -d $DOCKER_PARAM -i $PORT_MAPPING \
+	 -v $RULE_FILE:/etc/alertmanager/config.yml:Z \
      --name $ALERTMANAGER_NAME prom/alertmanager:$ALERT_MANAGER_VERSION $ALERTMANAGER_COMMANDS --log.level=debug --config.file=/etc/alertmanager/config.yml >& /dev/null
 
 

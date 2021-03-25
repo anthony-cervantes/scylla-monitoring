@@ -255,7 +255,7 @@ else
     DATA_DIR="-v "$(readlink -m $DATA_DIR)":/prometheus/data:Z"
 fi
 
-docker run -d $DOCKER_PARAM $USER_PERMISSIONS \
+docker run -u root -d $DOCKER_PARAM $USER_PERMISSIONS \
      $DATA_DIR \
      "${group_args[@]}" \
      -v $PWD/prometheus/build/prometheus.yml:/etc/prometheus/prometheus.yml:Z \
